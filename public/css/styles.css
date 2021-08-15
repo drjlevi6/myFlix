@@ -1,0 +1,11 @@
+table, td {
+	border: solid black 1px;
+}
+
+.header{
+	font-weight: 700;
+}
+
+td {
+	padding: 5px;
+}

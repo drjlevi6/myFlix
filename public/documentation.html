@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Movie Inspector</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+    </head>
+
+    <body>
+        <div>
+            Dr. Levi's movie app will allow its users to 
+            obtain a variety of information about movies, including lists,
+            their actors, their directors, and selected information 
+            about those directors. The requests, URLs and responses are:
+        </div>
+        <p></p>
+        <div>
+        	<table class="Movie-data">
+         		<tr>
+        			<td class="header">Method Type</td class="header">
+        			<td class="header">Query Parameters</td>
+        			<td class="header">Response</td>
+        		</tr>
+         		<tr>
+        			<td>GET</td><td>/users</td>
+        			<td>Get the entire user data base</td>
+        		</tr>
+         		<tr>
+        			<td>GET</td><td>/users/username</td>
+        			<td>Get a user by username</td>
+        		</tr>
+         		<tr>
+        			<td>GET</td><td>/movies/genre/movieTitle</td>
+        			<td>Get a movie’s genre</td>
+        		</tr>
+          		<tr>
+        			<td>GET</td><td>/movies/genre/name/genreName</td>
+        			<td>Get info about a genre by its name</td>
+        		</tr>
+        		<tr>
+        			<td>GET</td><td>/movies/director/name</td>
+        			<td>Get data about a director (bio, birth year, death year) by name</td>
+        		</tr>
+         		<tr>
+        			<td>GET</td><td>/movies</td>
+        			<td>Get entire list of current top movies</td>
+        		</tr>
+         		<tr>
+        			<td>GET</td><td>/movies/name</td>
+        			<td>Get data about a single movie, selected by title by the user</td>
+        		</tr>
+         		<tr>
+        			<td>GET</td><td>/</td>
+        			<td>Send generic welcome message</td>
+        		</tr>
+         		<tr>
+        			<td>GET</td><td>/documentation</td>
+        			<td>Gets this documentation file</td>
+        		</tr>
+         		<tr>
+        			<td>POST</td><td>/users/username</td>
+        			<td>Allow new user to register</td>
+        		</tr>
+         		<tr>
+        			<td>PUT</td><td>/users/username/newname</td>
+        			<td>Allow user to update their info</td>
+        		</tr>
+         		<tr>
+        			<td>POST</td><td>/users/username/movies/movieID</td>
+        			<td>Allow user to add a movie (by ID) to their list of favorites </td>
+        		</tr>
+         		<tr>
+        			<td>DELETE</td><td>/users/username/movies/movieID</td>
+        			<td>Allow user to remove a movie (by ID) from their list of favorites </td>
+        		</tr>
+         		<tr>
+        			<td>DELETE</td><td>/users/username/</td>
+        			<td>Unregister a user</td>
+        		</tr>
+       	</table>
+        </div>
+        <!--<div>
+        	And here's another paragraph.
+    	</div>--><!--Prints as a separate line. This file gets printed when 
+    		I enter "/documentation" to localhost:8080 (but not "documentation.html")-->
+    </body>
+</html>
