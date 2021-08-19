@@ -31,8 +31,8 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 // (See offline notes re connection string)
-mongoose.connect( String(process.env.CONNECTION_URI) + 
-	' || mongodb://localhost:27017/myFlix', 
+mongoose.connect( process.env.CONNECTION_URI ||
+	'mongodb://localhost:27017/myFlix', 
   { useNewUrlParser: true, useUnifiedTopology: true });
   
 //Display a welcome message:
