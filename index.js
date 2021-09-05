@@ -105,9 +105,8 @@ but the actual user object's password will be hashed
   });
   
 // Get all users
-//app.get('/users/',passport.authenticate('jwt', { session: false }), (req, res) => {
-app.get('/users/', (req, res) => {
-Users.find()
+app.get('/users/',passport.authenticate('jwt', { session: false }), (req, res) => {
+  Users.find()
       .then((users) => {
         res.status(201).json(users);
       })
@@ -119,7 +118,7 @@ Users.find()
  
 // Get a user by username
 app.get('/users/:Username', 
-  //passport.authenticate('jwt', { session: false }), 
+  passport.authenticate('jwt', { session: false }), 
 		(req, res) => {
     Users.findOne({ Username: req.params.Username })
       .then((user) => {
@@ -133,7 +132,7 @@ app.get('/users/:Username',
 
 // Get all data about a specified movie
 app.get('/movies/:name', 
-  //passport.authenticate('jwt', { session: false }), 
+  passport.authenticate('jwt', { session: false }), 
 		(req, res) => {
   Movies.findOne({ title:req.params.name }).then(movie => {
       res.json(movie);
@@ -161,7 +160,7 @@ app.get('/movies',
 
 // Get genre of a specific movie
 app.get('/movies/genre/:itsTitle', 
-  // passport.authenticate('jwt', { session: false }), 
+  passport.authenticate('jwt', { session: false }), 
     (req, res) => { 
   Movies.findOne({ title:req.params.itsTitle }).select("genre")
   .then((genre) => {
@@ -175,7 +174,7 @@ app.get('/movies/genre/:itsTitle',
 
 // Get info about a genre by its name
 app.get('/movies/genre/name/:Name', 
-  // passport.authenticate('jwt', { session: false }), 
+  passport.authenticate('jwt', { session: false }), 
     (req, res) => {
   Movies.findOne(
     { 'genre.name': req.params.Name },
@@ -190,7 +189,7 @@ app.get('/movies/genre/name/:Name',
 
 // Get info about a director (by their name)
 app.get('/movies/director/:Name', 
-  // passport.authenticate('jwt', { session: false }), 
+  passport.authenticate('jwt', { session: false }), 
     (req, res) => {
   console.log(req.params);
   Movies.findOne(
@@ -242,7 +241,7 @@ app.put('/users/:Username', [ //comment: see if GitHub Desktop is responding (20
 
 // Add a movie to a user's list of favorites
 app.post('/users/:Username/movies/:MovieID', 
-  // passport.authenticate('jwt', { session: false }), 
+  passport.authenticate('jwt', { session: false }), 
     (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
      $push: { FavoriteMovies: req.params.MovieID }
@@ -260,7 +259,7 @@ app.post('/users/:Username/movies/:MovieID',
 
 // Delete a movie from a user's list of favorites
 app.delete('/users/:Username/movies/:MovieID',  
-// passport.authenticate('jwt', { session: false }), 
+passport.authenticate('jwt', { session: false }), 
   (req, res) => {
   console.log(req.params);
   Users.findOneAndUpdate({ Username:  req.params.Username }, {
