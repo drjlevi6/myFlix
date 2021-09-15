@@ -103,7 +103,7 @@
       "birth": '1899',
       "death": '1983'
     },
-    "imagePath": 'https://m.media-amazon.com/images/M/MV5BODBhOTdkMGYtMzRkYS00ZGU2LThlMjItMzRiNjAxMzNjMWRjXkEyXkFqcGdeQXVyMDI2NDg0NQ@@._V1_QL75_UX190_CR0,6,190,281_.jpg',
+    "imagePath": 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Born_Yesterday_%281950_poster%29.jpg/800px-Born_Yesterday_%281950_poster%29.jpg',
     "featured": 'true'
   },
   {
