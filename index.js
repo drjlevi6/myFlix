@@ -210,20 +210,32 @@ app.get('/movies/director/:Name', passport.authenticate('jwt',
   (required)
   Birthday: Date
 }*/
-app.put('/users/:Username', [ //comment: see if GitHub Desktop is responding (20210810)
-      check('Username', 'Username is required').isLength({min: 5}),
-      check('Username', 'Username contains non alphanumeric characters' +
-      ' - not allowed.').isAlphanumeric(),
-      check('Email', 'Email does not appear to be valid').isEmail()
-    ], (req, res) => {
-      let hashedPassword = Users.hashPassword(req.body.Password);
-      Users.findOneAndUpdate({ Username: req.params.Username }, { $set:
-    {
-      Username: req.body.Username,
-      Password: hashedPassword,
-      Email: req.body.Email,
-      Birthday: req.body.Birthday
-    }
+app.put('/users/:Username', //[ //comment: see if GitHub Desktop is responding (20210810)
+//      check('Username', 'Username is required').isLength({min: 5}),
+//      check('Username', 'Username contains non alphanumeric characters' +
+//      ' - not allowed.').isAlphanumeric(),
+//      check('Email', 'Email does not appear to be valid').isEmail()
+//    ], 
+      passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+      
+      let updateObject = {};
+
+      if (req.body.Username){
+        updateObject.Username = req.body.Username;
+      }
+      if (req.body.Password){
+        let hashedPassword = Users.hashPassword(req.body.Password);
+        updateObject.Password = hashedPassword;
+      }
+      if (req.body.Email){
+        updateObject.Email = req.body.Email;
+      }
+      if (req.body.Birthday){
+        updateObject.Birthday = req.body.Birthday;
+      }
+   Users.findOneAndUpdate({ Username: req.params.Username }, { 
+     $set: updateObject
   },
   { new: true }, // This line makes sure that the updated document is returned
   (err, updatedUser) => {
